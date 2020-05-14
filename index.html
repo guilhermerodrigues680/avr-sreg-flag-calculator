@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora - AVR SREG</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora - AVR SREG</h1>
+        <p class="contributor">Por: Guilherme Rodrigues</p>
+        <pre>
+            Modo de uso:
+            Numeros em hex: 0xFF , Ox1C
+            Numeros em bin: 0b10001001 , 0b101
+            Numeros em dec: 123, -80
+        </pre>
+    </header>
+    <div class="content">
+        <div class="numbers-input">
+            <label for="input-r16">R16: </label>
+            <input type="text" value="0x3B" id="input-r16">
+            <label for="input-r17">R17: </label>
+            <input type="text" value="0x15" id="input-r17">
+            <button id="btn-calc-sreg">Calcular SREG</button>
+        </div>
+        <table id="table-sreg">
+            <caption>SREG - Status Register</caption>
+            <thead>
+                <tr>
+                    <th>r16</th>
+                    <th>r17</th>
+                    <th>difference</th>
+                    <th>signed relationship</th>
+                    <th>unsigned relationship</th>
+                    <th>H</th>
+                    <th>S</th>
+                    <th>V</th>
+                    <th>N</th>
+                    <th>Z</th>
+                    <th>C</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3B</td>
+                    <td>3B</td>
+                    <td>00</td>
+                    <td>+ = +</td>
+                    <td>=</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>0</td>
+                </tr>
+            </tbody>
+            <!-- <tfoot></tfoot> -->
+        </table>
+        <div>
+            <p id="p-info-r16"></p>
+            <p id="p-info-r17"></p>
+        </div>
+    </div>
+
+    <!-- <footer></footer> -->
+    <script src="js/utils.js"></script>
+    <script src="js/avr-sreg-calc.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

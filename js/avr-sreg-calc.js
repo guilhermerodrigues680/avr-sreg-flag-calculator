@@ -1,28 +1,28 @@
-const r16 = 0xA5
-const r17 = 0x68
-
-calcSREG(r16, r17);
-
 function calcSREG(r16, r17) {
-    printBinHexDec(r16);
-    printBinHexDec(r17);
+    // printBinHexDec(r16);
+    // printBinHexDec(r17);
 
     const op = '-'; // - , + , * ou /
     
-    console.log("Difference .:"     , calcDifferenceHex(r16, r17));
-    console.log("Signed Rel .:"     , calcSignedRel(r16, r17));
-    console.log("Unsigned Rel .:"   , calcUnsignedRel(r16, r17));
-    console.log("H .:"              , calcH(r16, r17));
-    console.log("S .:"              , calcS(r16, r17));
-    console.log("V .:"              , calcV(r16, r17));
-    console.log("N .:"              , calcN(r16, r17));
-    console.log("Z .:"              , calcZ(r16, r17));
-    console.log("C .:"              , calcC(r16, r17));
+    const SREG = {
+        diff: calcDifferenceHex(r16, r17),
+        signedRel: calcSignedRel(r16, r17),
+        unsignedRel: calcUnsignedRel(r16, r17),
+        H: calcH(r16, r17),
+        S: calcS(r16, r17),
+        V: calcV(r16, r17),
+        N: calcN(r16, r17),
+        Z: calcZ(r16, r17),
+        C: calcC(r16, r17),
+    };
+
+    return SREG;
 }
 
 function calcDifferenceHex(r16, r17) {
     const diff = (r16 - r17).toString(16).toUpperCase();
-    return `0x${diff}`;
+    // return `0x${diff}`;
+    return diff;
 }
 
 function calcSignedRel(r16, r17) {
@@ -132,41 +132,4 @@ function calculaNibbles(n) {
     nibbles.push(bin.substring(4)); // Nible menor
 
     return nibbles;
-}
-
-
-function printBinHexDec(n) {
-    let bin = (n >>> 0).toString(2);
-    let hex = (n >>> 0).toString(16).toLocaleUpperCase();
-
-    if (n < 0) {
-        bin = bin.substring(bin.length - 8);
-        hex = hex.substring(hex.length - 2);
-    }
-
-    switch (bin.length) {
-        case 1:
-            bin = "0000000" + bin;
-            break;
-        case 2:
-            bin = "000000" + bin;
-            break;
-        case 3:
-            bin = "00000" + bin;
-            break;
-        case 4:
-            bin = "0000" + bin;
-            break;
-        case 5:
-            bin = "000" + bin;
-            break;
-        case 6:
-            bin = "00" + bin;
-            break;
-        case 7:
-            bin = "0" + bin;
-            break;
-    }
-
-    console.log(`${n} \t 0b${bin} \t 0x${hex}`)
 }
