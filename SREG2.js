@@ -1,7 +1,5 @@
-// const r16 = 0b101
-// const r17 = 0b111
-const r16 = 0x3b
-const r17 = 0x15
+const r16 = 0xA5
+const r17 = 0x68
 
 calcSREG(r16, r17);
 
@@ -75,13 +73,10 @@ function calcV(r16, r17) {
     const n1 = new Int8Array([r16]);
     const n2 = new Int8Array([r17]);
 
-    const r16Signed = n1[0] & 0x7F;
-    const r17Signed = n2[0] & 0x7F;
+    // console.log(n1,n2);
 
-    // const V = (r16Signed + r17Signed) > 0x7F ? 1 : 0;
-    const V = (r16Signed - r17Signed) > 0x00 ? 1 : 0;
-
-    // console.log(r16Signed.toString(2), r17Signed.toString(2), V)
+    // const V = (n1 + n2) > 127 ? 1 : 0;
+    const V = (n1[0] - n2[0]) < -128 ? 1 : 0;
 
     return V;
 }
